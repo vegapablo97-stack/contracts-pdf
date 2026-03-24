@@ -1,209 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Contract Obligations & Entitlements – Salesforce View</title>
-<style>
-body {
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  background: #f5f7fa;
-  color: #1f2937;
-  margin: 0;
-  padding: 32px;
-}
-.container { max-width: 1200px; margin: auto; }
-h1 { font-size: 28px; margin-bottom: 6px; }
-p.subtitle { color: #6b7280; margin-bottom: 32px; }
-.card {
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  margin-bottom: 32px;
-  overflow: hidden;
-}
-.card-header {
-  background: #0f4c81;
-  color: #ffffff;
-  padding: 14px 20px;
-  font-size: 18px;
-  font-weight: 600;
-}
-.card-body { padding: 20px; }
-.section-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 26px 0 10px;
-  border-bottom: 2px solid #e5e7eb;
-  padding-bottom: 6px;
-}
-.kv {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 6px 16px;
-  margin-bottom: 4px;
-}
-.key { font-weight: 600; color: #374151; }
-.value { color: #111827; white-space: pre-wrap; }
-.empty { color: #9ca3af; font-style: italic; }
-.badge {
-  display: inline-block;
-  padding: 3px 10px;
-  font-size: 12px;
-  border-radius: 12px;
-  font-weight: 600;
-  margin-right: 6px;
-}
-.badge-blue { background: #e0f2fe; color: #075985; }
-.badge-green { background: #dcfce7; color: #166534; }
-.badge-gray { background: #e5e7eb; color: #374151; }
-.timeline {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin: 16px 0;
-}
-.timeline-item {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  padding: 12px;
-}
-.timeline-item h4 { margin: 0 0 6px; font-size: 14px; }
-footer {
-  margin-top: 60px;
-  font-size: 12px;
-  color: #6b7280;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Obligations & Entitlements Audit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; color: #1e293b; }
+        .field-label { font-weight: 700; color: #334155; margin-right: 0.5rem; }
+        .field-value { font-weight: 400; color: #64748b; }
+        .section-title { @apply text-[10px] font-black uppercase tracking-[0.2em] py-2 px-4 rounded-md mb-4 inline-block shadow-sm; }
+        .account-container { @apply max-w-6xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden mb-16 border border-slate-200; }
+        
+        /* Color Themes for Sections */
+        .title-general { background-color: #dbeafe; color: #1e40af; }
+        .title-details { background-color: #fef3c7; color: #92400e; }
+        .title-penalty { background-color: #fee2e2; color: #991b1b; }
+        .title-description { background-color: #f3f4f6; color: #374151; }
+        .title-entitlement { background-color: #dcfce7; color: #166534; }
+
+        .data-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+        .data-item { @apply border-b border-slate-50 pb-1; }
+    </style>
 </head>
-<body>
-<div class="container">
+<body class="p-6 md:p-12">
 
-<h1>Contract Obligations & Entitlements</h1>
-<p class="subtitle">Faithful Salesforce-aligned representation including blank fields – Executive readable format</p>
+    <header class="max-w-6xl mx-auto mb-12 text-center">
+        <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight">Full Obligations Audit Report</h1>
+        <p class="text-slate-500 mt-2 font-medium italic uppercase text-xs tracking-widest">Master Salesforce Export Analysis • FY26</p>
+    </header>
 
-<!-- ========== AT&T ========= -->
-<div class="card">
-  <div class="card-header">AT&T Mobility – Contract Obligation</div>
-  <div class="card-body">
-    <span class="badge badge-green">No Penalties</span>
-    <span class="badge badge-blue">Liability Cap</span>
+    <!-- AT&T MOBILITY -->
+    <div class="account-container">
+        <div class="bg-slate-900 p-8 text-white flex justify-between items-center">
+            <div>
+                <h2 class="text-2xl font-bold">AT&T Mobility</h2>
+                <p class="text-slate-400 text-sm">GM: Kathleen</p>
+            </div>
+            <div class="text-right">
+                <span class="bg-blue-500 text-[10px] font-black px-3 py-1 rounded-full uppercase">1 Obligation Found</span>
+            </div>
+        </div>
 
-    <div class="section-title">General</div>
-    <div class="kv"><div class="key">GM</div><div class="value">Kathleen</div></div>
-    <div class="kv"><div class="key">Account</div><div class="value">AT&T Mobility</div></div>
-    <div class="kv"><div class="key">Contract Obligation Name</div><div class="value">AT&T Mobility – No Penalties for Missed Milestones / Limited Liability & Special</div></div>
-    <div class="kv"><div class="key">Status</div><div class="value">Contracted</div></div>
-    <div class="kv"><div class="key">Obligation Action Date</div><div class="value empty">(blank)</div></div>
-    <div class="kv"><div class="key">Obligation Resolved Date</div><div class="value empty">(blank)</div></div>
-    <div class="kv"><div class="key">Obligation Type</div><div class="value">Contractual Remedy</div></div>
-    <div class="kv"><div class="key">Obligation Sub Type</div><div class="value empty">(blank)</div></div>
-    <div class="kv"><div class="key">Opportunity</div><div class="value empty">(blank)</div></div>
-    <div class="kv"><div class="key">Revenue Milestone</div><div class="value empty">(blank)</div></div>
-    <div class="kv"><div class="key">Ironclad Contract</div><div class="value empty">(blank)</div></div>
+        <div class="p-8 space-y-10">
+            <!-- General -->
+            <div>
+                <span class="section-title title-general">General</span>
+                <div class="data-grid">
+                    <div class="data-item"><span class="field-label">Contract Obligation Name:</span><span class="field-value">AT&T Mobility – No Penalties for Missed Milestones / Limited Liability & Special</span></div>
+                    <div class="data-item"><span class="field-label">Status:</span><span class="field-value">Contracted</span></div>
+                    <div class="data-item"><span class="field-label">Obligation Type:</span><span class="field-value">Contractual Remedy</span></div>
+                    <div class="data-item"><span class="field-label">Opportunity:</span><span class="field-value">N/A</span></div>
+                    <div class="data-item"><span class="field-label">Ironclad Contract:</span><span class="field-value">N/A</span></div>
+                </div>
+            </div>
 
-    <div class="section-title">Details</div>
-    <div class="kv"><div class="key">Penalty Basis</div><div class="value empty">(blank)</div></div>
-    <div class="kv"><div class="key">Obligation Trigger</div><div class="value">Availability / Uptime Breach</div></div>
-    <div class="kv"><div class="key">Grace Period</div><div class="value empty">(blank)</div></div>
-    <div class="kv"><div class="key">Cure Period</div><div class="value empty">(blank)</div></div>
-    <div class="kv"><div class="key">Obligation Applicability</div><div class="value">Entire Contract</div></div>
-    <div class="kv"><div class="key">Cap Type</div><div class="value">Fixed Amount Cap</div></div>
-    <div class="kv"><div class="key">Notice Required</div><div class="value empty">(blank)</div></div>
+            <!-- Details -->
+            <div>
+                <span class="section-title title-details">Details</span>
+                <div class="data-grid">
+                    <div class="data-item"><span class="field-label">Obligation Trigger:</span><span class="field-value">Availability / Uptime Breach</span></div>
+                    <div class="data-item"><span class="field-label">Obligation Applicability:</span><span class="field-value">Entire Contract</span></div>
+                    <div class="data-item"><span class="field-label">Grace Period:</span><span class="field-value">N/A</span></div>
+                    <div class="data-item"><span class="field-label">Cure Period:</span><span class="field-value">N/A</span></div>
+                    <div class="data-item"><span class="field-label">Notice Required:</span><span class="field-value">N/A</span></div>
+                </div>
+            </div>
 
-    <div class="section-title">Penalty Details</div>
-    <div class="kv"><div class="key">Penalty Amount</div><div class="value empty">(blank)</div></div>
-    <div class="kv"><div class="key">Cap Amount</div><div class="value">USD 2,000,000</div></div>
+            <!-- Penalty Details -->
+            <div>
+                <span class="section-title title-penalty">Penalty Details</span>
+                <div class="data-grid">
+                    <div class="data-item"><span class="field-label">Cap Type:</span><span class="field-value">Fixed Amount Cap</span></div>
+                    <div class="data-item"><span class="field-label">Cap Amount:</span><span class="field-value font-bold text-red-600">$2,000,000</span></div>
+                    <div class="data-item"><span class="field-label">Penalty Amount:</span><span class="field-value">N/A</span></div>
+                </div>
+            </div>
 
-    <div class="section-title">Description Information</div>
-    <div class="value">Contractual Notes (per email from Kathleen 03/16/26):
-• AT&T contracts include no penalties or service credits for missed deadlines, milestones, or commitments.
-• Liability is limited under Section VI.4.2 to the greater of USD 2,000,000 or amounts paid in the six (6) months preceding the claim.
-• Contract allows special pricing where AST does not provide continuous 24/7 CONUS coverage.
-• Impact is revenue adjustment, not penalties.</div>
-  </div>
-</div>
-
-<!-- ========== STC ========= -->
-<div class="card">
-  <div class="card-header">Saudi Telecommunications Company (STC) – Contract Obligations</div>
-  <div class="card-body">
-    <span class="badge badge-blue">Delivery Remedies</span>
-    <span class="badge badge-gray">Regulatory Remedies</span>
-
-    <div class="section-title">Article 1.14 – KSA Commercial Launch Delay Payments</div>
-    <div class="timeline">
-      <div class="timeline-item"><h4>First Delay Payment</h4><div>USD 3,000,000</div></div>
-      <div class="timeline-item"><h4>Second Delay Payment</h4><div>USD 3,000,000</div></div>
-      <div class="timeline-item"><h4>Third Delay Payment</h4><div>USD 19,000,000</div></div>
-      <div class="timeline-item"><h4>Termination Cap</h4><div>USD 160,000,000</div></div>
+            <!-- Description -->
+            <div>
+                <span class="section-title title-description">Description</span>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-sm leading-relaxed text-slate-600">
+                    <span class="field-label">Contractual Notes:</span><span class="field-value italic">AT&T contracts include no penalties or service credits for missed deadlines, milestones, or commitments. Liability is limited under Section VI.4.2: AST aggregate liability shall not exceed the greater of USD 2,000,000 or amounts paid by AT&T in the six (6) months preceding the claim. Separate from penalties, the contract allows for special pricing in cases where AST does not provide continuous (24/7) CONUS coverage. Potential impact is revenue adjustment, not contractual penalties.</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="section-title">Common Salesforce Fields (Applies to First / Second / Third Delay)</div>
-    <div class="kv"><div class="key">GM</div><div class="value">Ahmed</div></div>
-    <div class="kv"><div class="key">Account</div><div class="value">STC</div></div>
-    <div class="kv"><div class="key">Status</div><div class="value">Contracted</div></div>
-    <div class="kv"><div class="key">Obligation Type</div><div class="value">Project / Delivery Remedy</div></div>
-    <div class="kv"><div class="key">Obligation Trigger</div><div class="value">Milestone Missed (Date)</div></div>
-    <div class="kv"><div class="key">Grace Period</div><div class="value">Contract Defined</div></div>
-    <div class="kv"><div class="key">Cure Period</div><div class="value">Contract Defined</div></div>
-    <div class="kv"><div class="key">Notice Required</div><div class="value">Yes – Formal Written Notice</div></div>
+    <!-- SATCO SCS LUXEMBOURG -->
+    <div class="account-container border-l-[12px] border-indigo-600">
+        <div class="bg-indigo-600 p-8 text-white flex justify-between items-center">
+            <div>
+                <h2 class="text-2xl font-bold">SatCo SCS Luxembourg</h2>
+                <p class="text-indigo-200 text-sm">GM: Clemens</p>
+            </div>
+            <div class="text-right flex gap-2">
+                <span class="bg-white/20 text-[10px] font-black px-3 py-1 rounded-full uppercase">1 Obligation</span>
+                <span class="bg-emerald-500 text-[10px] font-black px-3 py-1 rounded-full uppercase">1 Entitlement</span>
+            </div>
+        </div>
 
-    <div class="section-title">Article 1.7 – Failure to Secure Regulatory Market Access</div>
-    <div class="kv"><div class="key">Penalty Amount</div><div class="value">USD 5,000,000 per unavailable country</div></div>
-    <div class="kv"><div class="key">Cap Amount</div><div class="value">USD 5,000,000</div></div>
-    <div class="kv"><div class="key">Obligation Trigger</div><div class="value">Other (Contract-Defined)</div></div>
-    <div class="kv"><div class="key">Obligation Applicability</div><div class="value">Specific Site / Region / Location</div></div>
+        <div class="p-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Obligation Part -->
+            <div class="space-y-8">
+                <h3 class="text-indigo-600 font-extrabold border-b-2 border-indigo-50 pb-2">OBLIGATION DATA</h3>
+                
+                <div>
+                    <span class="section-title title-general">General</span>
+                    <div class="space-y-2 text-sm">
+                        <div class="data-item"><span class="field-label">Obligation Name:</span><span class="field-value">General Liability Cap – Clause 23</span></div>
+                        <div class="data-item"><span class="field-label">Status:</span><span class="field-value">Contracted</span></div>
+                        <div class="data-item"><span class="field-label">Type:</span><span class="field-value">Governance / Performance Remedy</span></div>
+                    </div>
+                </div>
 
-    <div class="section-title">Description Information</div>
-    <div class="value">AST exposure to delay payments and termination rights if KSA Service Launch and Commercial Launch are not achieved within the timelines under Article 1.14. Separate fixed recoverable amounts and Minimum Annual Revenue Commitment reductions apply if Market Access is not secured under Article 1.7.</div>
-  </div>
-</div>
+                <div>
+                    <span class="section-title title-details">Details</span>
+                    <div class="space-y-2 text-sm">
+                        <div class="data-item"><span class="field-label">Trigger:</span><span class="field-value">SLA Breach (Response/Resolution)</span></div>
+                        <div class="data-item"><span class="field-label">Penalty Basis:</span><span class="field-value text-orange-600 font-bold">Fixed Amount</span></div>
+                        <div class="data-item"><span class="field-label">Cure Period:</span><span class="field-value italic">Contract Defined</span></div>
+                    </div>
+                </div>
 
-<!-- ========== SATCO ========= -->
-<div class="card">
-  <div class="card-header">SatCo SCS Luxembourg – Obligation & Entitlement</div>
-  <div class="card-body">
-    <span class="badge badge-blue">Liability Cap</span>
-    <span class="badge badge-gray">Entitlement (Inactive)</span>
+                <div>
+                    <span class="section-title title-penalty">Penalty Details</span>
+                    <div class="bg-red-50 p-4 rounded-xl border border-red-100">
+                        <div class="data-item border-red-100"><span class="field-label">Penalty Amount:</span><span class="field-value font-bold text-red-700">$2,000,000</span></div>
+                        <div class="data-item border-none"><span class="field-label">Cap Amount:</span><span class="field-value font-bold text-red-700">$2,000,000</span></div>
+                    </div>
+                </div>
 
-    <div class="section-title">Contract Obligation – General Liability Cap (Clause 23)</div>
-    <div class="kv"><div class="key">GM</div><div class="value">Clemens</div></div>
-    <div class="kv"><div class="key">Account</div><div class="value">SatCo SCS Luxembourg</div></div>
-    <div class="kv"><div class="key">Contract Obligation Name</div><div class="value">General Liability Cap – Clause 23</div></div>
-    <div class="kv"><div class="key">Status</div><div class="value">Contracted</div></div>
-    <div class="kv"><div class="key">Obligation Type</div><div class="value">Governance / Performance Remedy</div></div>
-    <div class="kv"><div class="key">Penalty Basis</div><div class="value">Fixed Amount</div></div>
-    <div class="kv"><div class="key">Obligation Trigger</div><div class="value">SLA Breach (Response / Resolution)</div></div>
-    <div class="kv"><div class="key">Grace Period</div><div class="value">Contract Defined</div></div>
-    <div class="kv"><div class="key">Cure Period</div><div class="value">Contract Defined</div></div>
-    <div class="kv"><div class="key">Obligation Applicability</div><div class="value">Specific PO / Order / Project</div></div>
-    <div class="kv"><div class="key">Cap Type</div><div class="value">Fixed Amount Cap</div></div>
-    <div class="kv"><div class="key">Notice Required</div><div class="value">Contract Defined</div></div>
-    <div class="kv"><div class="key">Penalty Amount</div><div class="value">USD 2,000,000</div></div>
-    <div class="kv"><div class="key">Cap Amount</div><div class="value">USD 2,000,000</div></div>
+                <div>
+                    <span class="section-title title-description text-slate-500">Description</span>
+                    <p class="text-xs text-slate-500 leading-relaxed italic">AST’s aggregate liability to SatCo per Order is limited under Clause 23 to the greater of 120% of Charges or USD 2,000,000 in each 18 month period.</p>
+                </div>
+            </div>
 
-    <div class="section-title">Description Information (Salesforce)</div>
-    <div class="value">AST’s aggregate liability to SatCo per Order is limited under Clause 23 (excluding Service Credits) to the greater of 120% of Charges or USD 2,000,000 in each eighteen (18) month period from the Commencement Date.</div>
+            <!-- Entitlement Part -->
+            <div class="bg-emerald-50/50 p-8 rounded-3xl border border-emerald-100 space-y-8">
+                <h3 class="text-emerald-700 font-extrabold border-b-2 border-emerald-100 pb-2 flex justify-between">
+                    ENTITLEMENT DATA
+                    <span class="text-[10px] text-emerald-600">INACTIVE</span>
+                </h3>
+                
+                <div class="space-y-4">
+                    <div class="data-item border-emerald-100"><span class="field-label">Entitlement Name:</span><span class="field-value">Service Levels and Service Credits – SatCo</span></div>
+                    <div class="data-item border-emerald-100"><span class="field-label">Type:</span><span class="field-value">Satellite Availability</span></div>
+                    <div class="data-item border-emerald-100"><span class="field-label">Service Level Objective:</span><span class="field-value">As defined in Schedule 2</span></div>
+                    
+                    <div class="pt-4">
+                        <span class="section-title title-entitlement">Entitlement Notes</span>
+                        <div class="bg-white p-6 rounded-2xl border border-emerald-100 text-xs text-emerald-800 leading-loose shadow-sm">
+                            <span class="field-label block mb-2 underline">Conditional Commencement:</span>
+                            The Exclusive Distribution Agreement does not define a fixed commencement date. Pursuant to Schedule 2, Service Credits only become applicable after the relevant Low Band Commercial Service Availability Date and completion of network testing.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div class="section-title">Entitlement – Service Levels and Service Credits</div>
-    <div class="kv"><div class="key">Entitlement Name</div><div class="value">Service Levels and Service Credits – SatCo</div></div>
-    <div class="kv"><div class="key">Type</div><div class="value">Satellite Availability</div></div>
-    <div class="kv"><div class="key">Status</div><div class="value">Inactive</div></div>
-    <div class="kv"><div class="key">Service Level Objective</div><div class="value">Service Levels as defined in Schedule 2 of the Agreement</div></div>
-    <div class="kv"><div class="key">Start Date</div><div class="value empty">(blank)</div></div>
-    <div class="kv"><div class="key">End Date</div><div class="value empty">(blank)</div></div>
-    <div class="kv"><div class="key">SLA Policy</div><div class="value empty">(blank)</div></div>
+    <!-- STC -->
+    <div class="account-container border-t-8 border-red-500">
+        <div class="bg-slate-800 p-8 text-white flex justify-between items-center">
+            <div>
+                <h2 class="text-2xl font-bold">Saudi Telecom Company (STC)</h2>
+                <p class="text-slate-400 text-sm">GM: Ahmed</p>
+            </div>
+            <div class="text-right">
+                <span class="bg-red-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">4 Multi-Phase Obligations</span>
+            </div>
+        </div>
 
-    <div class="section-title">Entitlement Notes (Salesforce)</div>
-    <div class="value">The Exclusive Distribution Agreement does not define a fixed commencement date for Service Levels or Service Credits. Service Credits only become applicable after the relevant Low Band Commercial Service Availability Date and completion of network testing and agreement of applicable SLO KPIs.</div>
-  </div>
-</div>
+        <div class="p-8 space-y-12">
+            
+            <!-- GROUPED OBLIGATION: KSA COMMERCIAL LAUNCH -->
+            <div class="border border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                <div class="bg-red-50 px-6 py-4 border-b border-red-100 flex items-center justify-between">
+                    <h3 class="text-red-800 font-bold uppercase text-sm tracking-wide">KSA Commercial Launch (Art. 1.14)</h3>
+                    <span class="text-[10px] bg-red-200 text-red-700 px-3 py-1 rounded-full font-bold">Grouped Multi-Penalty</span>
+                </div>
+                
+                <div class="p-6 grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    <!-- Global Info for this group -->
+                    <div class="lg:col-span-1 space-y-4 border-r border-slate-100 pr-4">
+                        <span class="section-title title-general">General</span>
+                        <div class="space-y-1 text-xs">
+                            <div class="data-item"><span class="field-label">Status:</span><span class="field-value">Contracted</span></div>
+                            <div class="data-item"><span class="field-label">Type:</span><span class="field-value">Project Remedy</span></div>
+                            <div class="data-item"><span class="field-label">Trigger:</span><span class="field-value">Milestone Missed</span></div>
+                            <div class="data-item"><span class="field-label">Grace Period:</span><span class="field-value">Contract Defined</span></div>
+                        </div>
+                    </div>
 
-<footer>
-Generated from Salesforce-aligned Excel. Includes all fields and preserves blank values. For internal executive and legal use only.
-</footer>
+                    <!-- Iterative Penalties -->
+                    <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white border rounded-2xl p-4 shadow-sm border-red-50">
+                            <p class="text-[10px] font-black text-red-400 uppercase mb-2">1st Delay Payment</p>
+                            <p class="text-2xl font-extrabold text-red-600">$5,000,000</p>
+                            <p class="text-[10px] text-slate-400 mt-2">Cap: $5,000,000</p>
+                        </div>
+                        <div class="bg-white border rounded-2xl p-4 shadow-sm border-red-50">
+                            <p class="text-[10px] font-black text-red-400 uppercase mb-2">2nd Delay Payment</p>
+                            <p class="text-2xl font-extrabold text-red-600">$5,000,000</p>
+                            <p class="text-[10px] text-slate-400 mt-2">Cap: $5,000,000</p>
+                        </div>
+                        <div class="bg-white border rounded-2xl p-4 shadow-sm border-red-50">
+                            <p class="text-[10px] font-black text-red-400 uppercase mb-2">3rd Delay Payment</p>
+                            <p class="text-2xl font-extrabold text-red-600">$19,000,000</p>
+                            <p class="text-[10px] text-slate-400 mt-2">Cap: $19,000,000</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="px-6 pb-6">
+                    <div class="bg-slate-50 p-4 rounded-xl text-xs text-slate-500 italic">
+                        <span class="field-label">Common Description:</span> Fixed penalty for delays in KSA Commercial Launch. A Long Stop Date applies twelve (12) months from AST’s receipt of the Advanced Payment.
+                    </div>
+                </div>
+            </div>
 
-</div>
+            <!-- REGULATORY MARKET ACCESS -->
+            <div class="border border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                <div class="bg-orange-50 px-6 py-4 border-b border-orange-100">
+                    <h3 class="text-orange-800 font-bold uppercase text-sm tracking-wide">Regulatory Market Access (Art. 1.7)</h3>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div class="space-y-4">
+                            <span class="section-title title-general">General & Execution</span>
+                            <div class="data-grid text-sm">
+                                <div class="data-item"><span class="field-label">Obligation Trigger:</span><span class="field-value">Failure to Obtain Approval</span></div>
+                                <div class="data-item"><span class="field-label">Notice Required:</span><span class="field-value font-bold text-slate-800">Yes – Formal Written</span></div>
+                                <div class="data-item"><span class="field-label">Action Date:</span><span class="field-value">31-Dec-2027 / 31-Dec-2028</span></div>
+                                <div class="data-item"><span class="field-label">Applicability:</span><span class="field-value">Specific Site / Region</span></div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <span class="section-title title-penalty">Financial Exposure</span>
+                            <div class="data-grid text-sm">
+                                <div class="data-item"><span class="field-label">Penalty Amount:</span><span class="field-value font-extrabold text-red-600">$5,000,000</span></div>
+                                <div class="data-item"><span class="field-label">Cap Type:</span><span class="field-value">Fixed Amount Cap</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <span class="section-title title-description">Detailed Description</span>
+                        <div class="bg-white border border-slate-200 p-6 rounded-2xl text-xs text-slate-600 leading-relaxed space-y-3">
+                            <p>AST obligation to obtain regulatory market access in STC Covered Markets. Failure triggers fixed recoverable amounts per country and potential minimum annual revenue commitment reductions under Article 1.7.</p>
+                            <p class="font-bold text-slate-800">Key Deadlines:</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Multiple country-specific deadlines apply: Dec 2027 and Dec 2028.</li>
+                                <li>Long Stop Date: 12 months from receipt of Advanced Payment.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="max-w-6xl mx-auto text-center py-10 border-t border-slate-200">
+        <p class="text-slate-400 text-[10px] uppercase font-bold tracking-[0.4em]">Proprietary & Confidential • Salesforce Obligations Engine v4.0</p>
+    </footer>
+
 </body>
 </html>
